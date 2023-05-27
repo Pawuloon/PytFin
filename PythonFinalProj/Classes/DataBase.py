@@ -17,5 +17,5 @@ class DataBase:
     # execute addition
     def add(self, name, cal, protein, fat, carbs):
         self.cursor.execute("INSERT INTO Product (Name,Calories,Protein,Fat,Carbohydrates) "
-                            "VALUES ({},{},{},{},{})".format(name, cal, protein, fat, carbs))
+                            "VALUES (?,?,?,?,?)", (name, cal, protein, fat, carbs))
         self.conn.commit()

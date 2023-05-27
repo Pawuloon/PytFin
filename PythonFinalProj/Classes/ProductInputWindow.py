@@ -6,7 +6,7 @@ from PythonFinalProj.Classes.DataBase import DataBase
 
 class ProductInputWindow(tk.Toplevel):
     def __init__(self, mainWindow):
-        super().__init__(mainWindow)
+        super().__init__(master=mainWindow)
         self.sub = None
         self.productCarbohydrates = None
         self.productFat = None
@@ -17,7 +17,6 @@ class ProductInputWindow(tk.Toplevel):
         self.geometry("500x400")
         self.setBackground()
         self.textFields()
-        self.initializeDataBase()
 
     # Create TextFields for user input
     def textFields(self):
@@ -27,41 +26,49 @@ class ProductInputWindow(tk.Toplevel):
         self.productName = tk.Entry(self)
         self.productName.pack()
 
+        cal = tk.StringVar()
         labelCal = tk.Label(self, text="Calories", font="Arial", bg="yellow")
         labelCal.pack()
-        self.productCal = tk.Entry(self)
+        self.productCal = tk.Entry(self, textvariable=cal)
         self.productCal.pack()
 
+        prot = tk.StringVar()
         labelProtein = tk.Label(self, text="Protein", font="Arial", bg="yellow")
         labelProtein.pack()
-        self.productProtein = tk.Entry(self)
+        self.productProtein = tk.Entry(self, textvariable=prot)
         self.productProtein.pack()
 
-        labelFat = tk.Label(self, text="Fat", font="Arial")
+        fat = tk.StringVar()
+        labelFat = tk.Label(self, text="Fat", font="Arial", bg="yellow")
         labelFat.pack()
         self.productFat = tk.Entry(self)
         self.productFat.pack()
 
         labelCarbo = tk.Label(self, text="Carbohydrates", font="Arial", bg="yellow")
         labelCarbo.pack()
-        self.productCarbohydrates = tk.Entry(self)
+        self.productCarbohydrates = tk.Entry(self, textvariable=fat)
         self.productCarbohydrates.pack()
 
         self.sub = tk.Button(self, text="Enter Product", command=self.inputUser, bg="yellow")
         self.sub.pack()
 
     # display input remake it later on, so it will input this into database of certain user
-    @staticmethod
-    def inputUser():
+
+    def inputUser(self):
         messagebox.showinfo("Info", "Product has been added !!!")
+        name = self.productName.get()
+        cal = self.productCal.get()
+        prot = self.productProtein.get()
+        fat = self.productFat.get()
+        carbs = self.productCarbohydrates.get()
+        self.initializeDataBase(name, cal, prot, fat, carbs)
+        ProductInputWindow.destroy(self)
 
-    @staticmethod
-    def initializeDataBase():
+    # def initializeDataBase(self):
+
+    def initializeDataBase(self, name=0, cal=0, prot=0, fat=0, carbs=0):
         data = DataBase()
-        data.conn()
-
-    def addToDataBase(self):
-        pass
+        data.add(name, cal, prot, fat, carbs)
 
     def setBackground(self):
         image = tk.PhotoImage(file="../Pics/img.png")

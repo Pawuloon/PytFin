@@ -4,17 +4,17 @@ from PIL import Image, ImageTk
 from PythonFinalProj.Classes.ProductInputWindow import ProductInputWindow
 
 
-class MyGui:
+class MyGui(tk.Tk):
     def __init__(self):
+        super().__init__()
         self.imgName = None
         self.photo = None
-        self.window = tk.Tk()
-        self.window.title("Weight Calculator")
-        self.window.geometry("500x400")
-
+        self.title("Weight Calculator")
+        self.geometry("500x400")
         self.setBackground()
         self.buttons()
         self.icon()
+        self.run()
 
     # Set icon
     def icon(self):
@@ -22,31 +22,32 @@ class MyGui:
         icon = Image.open(path)
         icoPath = "../Pics/IcoIcon.ico"
         icon.save(icoPath, format="ICO")
-        self.window.iconbitmap(icoPath)
+        self.iconbitmap(icoPath)
 
     # Startup Image
     def image(self):
         image = Image.open("../Pics/img.png")
         image = image.resize((500, 200), Image.ANTIALIAS)
         self.photo = ImageTk.PhotoImage(image)
-        self.imgName = tk.Label(self.window, image=self.photo)
+        self.imgName = tk.Label(self, image=self.photo)
         self.imgName.pack()
 
     def setBackground(self):
         image = tk.PhotoImage(file="../Pics/img.png")
-        background = tk.Label(self.window, image=image)
+        background = tk.Label(self, image=image)
         background.place(relx=0, rely=0, relwidth=1, relheight=1)
         background.image = image
 
     # Buttons
     def buttons(self):
-        buttonEnterProduct = tk.Button(self.window, text="Enter your Product", width=70, height=5,
-                                       command=self.buEnClick,bg="yellow")
+        buttonEnterProduct = tk.Button(self, text="Enter your Product", width=70, height=5,
+                                       command=self.buEnClick, bg="yellow")
+
         buttonEnterProduct.place(x=0, y=0, anchor=tk.CENTER)
         buttonEnterProduct.pack()
 
     def buEnClick(self):
-        ProductInputWindow(self.window)
+        ProductInputWindow(self)
 
     def run(self):
-        self.window.mainloop()
+        self.mainloop()
