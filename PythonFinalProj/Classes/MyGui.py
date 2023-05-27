@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
-from PythonFinalProj.ProductInputWindow import ProductInputWindow
+from PythonFinalProj.Classes.ProductInputWindow import ProductInputWindow
 
 
 class MyGui:
@@ -18,22 +18,22 @@ class MyGui:
 
     # Set icon
     def icon(self):
-        path = "Pics/img_1.png"
+        path = "../Pics/img_1.png"
         icon = Image.open(path)
-        icoPath = "Pics/IcoIcon.ico"
+        icoPath = "../Pics/IcoIcon.ico"
         icon.save(icoPath, format="ICO")
         self.window.iconbitmap(icoPath)
 
     # Startup Image
     def image(self):
-        image = Image.open("Pics/img.png")
+        image = Image.open("../Pics/img.png")
         image = image.resize((500, 200), Image.ANTIALIAS)
         self.photo = ImageTk.PhotoImage(image)
         self.imgName = tk.Label(self.window, image=self.photo)
         self.imgName.pack()
 
     def setBackground(self):
-        image = tk.PhotoImage(file="Pics/img.png")
+        image = tk.PhotoImage(file="../Pics/img.png")
         background = tk.Label(self.window, image=image)
         background.place(relx=0, rely=0, relwidth=1, relheight=1)
         background.image = image
