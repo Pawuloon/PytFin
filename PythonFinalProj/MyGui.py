@@ -6,20 +6,31 @@ class MyGui:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Weight Calculator")
+        self.window.geometry("500x400")
         self.imgName = None
         self.photo = None
+        self.icon()
+        self.imgage()
         self.buttons()
 
-    def buttons(self):
-        # Add image to the app
-        self.window.geometry("500x400")
+    # Set icon
+    def icon(self):
+        path = "Pics/img_1.png"
+        icon = Image.open(path)
+        icoPath = "Pics/IcoIcon.ico"
+        icon.save(icoPath, format="ICO")
+        self.window.iconbitmap(icoPath)
+
+    # Startup Image
+    def imgage(self):
         image = Image.open("Pics/img.png")
         image = image.resize((500, 200), Image.ANTIALIAS)
         self.photo = ImageTk.PhotoImage(image)
         self.imgName = tk.Label(self.window, image=self.photo)
         self.imgName.pack()
 
-        # Buttons
+    # Buttons
+    def buttons(self):
         buttonEnterProduct = tk.Button(self.window, text="Enter your Product", command=self.buEnClick)
         buttonEnterProduct.pack()
 
