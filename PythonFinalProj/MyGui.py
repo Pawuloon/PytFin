@@ -1,12 +1,12 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
-
 class MyGui:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Weight Calculator")
         self.window.geometry("500x400")
+        self.window.configure(bg="green")
         self.imgName = None
         self.photo = None
         self.icon()
