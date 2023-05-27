@@ -11,6 +11,7 @@ class MyGui(tk.Tk):
         self.photo = None
         self.title("Weight Calculator")
         self.geometry("500x400")
+        self.resizable(False,False)
         self.setBackground()
         self.buttons()
         self.icon()
@@ -39,6 +40,7 @@ class MyGui(tk.Tk):
         background.image = image
 
     # Buttons
+    # Add new button for accessing your daily diet
     def buttons(self):
         buttonEnterProduct = tk.Button(self, text="Enter your Product", width=70, height=5,
                                        command=self.buEnClick, bg="yellow")

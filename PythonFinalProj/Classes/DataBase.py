@@ -1,6 +1,6 @@
 import sqlite3 as sql
 
-
+# Add retrival option when user will be entering products into his diet
 class DataBase:
     def __init__(self):
         self.conn = sql.connect('../Database/myDataBase.db')
