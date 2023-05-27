@@ -1,3 +1,5 @@
+from PythonFinalProj.MyGui import MyGui
 
 if __name__ == '__main__':
-    pass
+    display = MyGui()
+    display.run()
