@@ -1,6 +1,6 @@
 import tkinter as tk
 
-
+# Add plots for showing daily basis calories within a month
 class Plots(tk.Toplevel):
     def __init__(self, masterWindow):
         super().__init__(master=masterWindow)

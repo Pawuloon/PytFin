@@ -24,11 +24,13 @@ class DataBase:
         self.conn.commit()
         self.ditch()
 
+    # Ditch data that are incorrect
     def ditch(self):
         self.cursor.execute("DELETE FROM Product "
                             "WHERE Name='' OR Calories='' or Protein ='' or Fat ='' or Carbohydrates =''")
         self.conn.commit()
 
+    # Retrive meals from database
     def retrieve(self):
         mealList = []
         myRes = self.cursor.execute("SELECT * FROM Product")
