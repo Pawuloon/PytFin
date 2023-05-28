@@ -1,9 +1,9 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
-from PythonFinalProj.Classes.DietWindow import DietWindow
-from PythonFinalProj.Classes.Plots import Plots
-from PythonFinalProj.Classes.ProductInputWindow import ProductInputWindow
+from PythonFinalProj.Classes.GUI.DietWindow import DietWindow
+from PythonFinalProj.Classes.GUI.Plots import Plots
+from PythonFinalProj.Classes.GUI.ProductInputWindow import ProductInputWindow
 
 
 class MyGui(tk.Tk):

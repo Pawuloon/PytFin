@@ -1,6 +1,6 @@
 import sqlite3 as sql
 
-from PythonFinalProj.Classes.Meal import Meal
+from PythonFinalProj.Classes.Model.Meal import Meal
 
 
 # Add retrival option when user will be entering products into his diet

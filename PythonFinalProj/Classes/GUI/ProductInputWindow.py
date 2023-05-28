@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-from PythonFinalProj.Classes.DataBase import DataBase
+from PythonFinalProj.Classes.DataBase.DataBase import DataBase
 
 
 class ProductInputWindow(tk.Toplevel):
