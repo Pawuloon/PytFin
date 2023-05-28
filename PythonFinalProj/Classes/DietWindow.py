@@ -1,12 +1,18 @@
 import tkinter as tk
 
 
-class Plots(tk.Toplevel):
+class DietWindow(tk.Toplevel):
+
     def __init__(self, masterWindow):
         super().__init__(master=masterWindow)
+        self.title = "Your Daily Diet!"
         self.geometry("500x400")
         self.resizable(False, False)
         self.setBackground()
+        self.data()
+
+    def data(self):
+        pass
 
     def setBackground(self):
         image = tk.PhotoImage(file="../Pics/img.png")

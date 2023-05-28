@@ -15,7 +15,7 @@ class ProductInputWindow(tk.Toplevel):
         self.productName = None
         self.title("Product input")
         self.geometry("500x400")
-        self.resizable(False,False)
+        self.resizable(False, False)
         self.setBackground()
         self.textFields()
 
