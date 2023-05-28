@@ -56,7 +56,7 @@ class MyGui(tk.Tk):
         buttonAccessDiet.place(x=5, y=5, anchor=tk.CENTER)
         buttonAccessDiet.pack()
 
-        # Third Button
+        # Third Button for plot
         buttonAccessPlot = tk.Button(self, text="Access your monthly progress !", width=70, height=5,
                                      command=self.plotClick, bg='yellow')
         buttonAccessPlot.place(x=10, y=10, anchor=tk.CENTER)

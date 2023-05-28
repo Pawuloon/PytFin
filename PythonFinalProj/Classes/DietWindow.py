@@ -1,6 +1,7 @@
 import tkinter as tk
 
 
+# Window for accessing your own diet
 class DietWindow(tk.Toplevel):
 
     def __init__(self, masterWindow):
