@@ -4,6 +4,7 @@ import tkinter as tk
 class Plots(tk.Toplevel):
     def __init__(self, masterWindow):
         super().__init__(master=masterWindow)
+        self.title("Monthly progress")
         self.geometry("500x400")
         self.resizable(False, False)
         self.setBackground()

@@ -31,7 +31,7 @@ class DataBase:
         self.conn.commit()
 
     # Retrive meals from database
-    def retrieve(self):
+    def getProducts(self):
         mealList = []
         myRes = self.cursor.execute("SELECT * FROM Product")
         rows = myRes.fetchall()
