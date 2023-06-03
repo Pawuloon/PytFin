@@ -20,7 +20,7 @@ class DataBase:
 
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS Day 
                 (Id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                Day TEXT, Calories DECIMAL, Protein DECIMAL, Fat DECIMAL, Carbohydrates DECIMAL)''')
+                DayName Date, Calories DECIMAL, Protein DECIMAL, Fat DECIMAL, Carbohydrates DECIMAL)''')
         self.conn.commit()
 
     # execute addition
@@ -30,9 +30,15 @@ class DataBase:
         self.conn.commit()
         self.ditch()
 
+    # Add day to database
     def addDay(self, Diet):
-        self.cursor.execute("INSERT INTO Day (Day,Calories,Protein,Fat,Carbohydrates) "
+        self.cursor.execute("INSERT OR REPLACE INTO Day (DayName,Calories,Protein,Fat,Carbohydrates) "
                             "VALUES (?,?,?,?,?)", (Diet.dayName, Diet.calories, Diet.protein, Diet.fat, Diet.carbs))
+        self.conn.commit()
+
+    def replaceDay(self, Diet):
+        self.cursor.execute("UPDATE Day SET Calories = ?, Protein = ?, Fat = ?, Carbohydrates = ? WHERE Id = ?",
+                            (Diet.calories, Diet.protein, Diet.fat, Diet.carbs, self.cursor.lastrowid))
         self.conn.commit()
 
     # Ditch data that are incorrect
@@ -41,9 +47,10 @@ class DataBase:
                             "WHERE Name='' OR Calories='' or Protein ='' or Fat ='' or Carbohydrates =''")
         self.conn.commit()
 
-    def clearDay(self):
-        self.cursor.execute("DELETE FROM Day where Day ={}".format(self.currentDate.strftime("%d/%m/%Y")))
-        self.conn.commit()
+    def getDay(self):
+        self.cursor.execute("SELECT DayName FROM Day order by Id desc limit 1")
+        result = self.cursor.fetchone()
+        return result
 
     # Retrive meals from database
     def getProducts(self):
@@ -52,13 +59,13 @@ class DataBase:
         rows = myRes.fetchall()
 
         for data in rows:
-            id = data[0]
+            Id = data[0]
             name = data[1]
             calories = data[2]
             protein = data[3]
             fat = data[4]
             carbs = data[5]
-            meal = Meal(id, name, calories, protein, fat, carbs)
+            meal = Meal(Id, name, calories, protein, fat, carbs)
             mealList.append(meal)
 
         return mealList
