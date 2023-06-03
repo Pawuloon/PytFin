@@ -1,5 +1,6 @@
 class Diet:
-    def __init__(self, dayName, calories, protein, fat, carbs):
+    def __init__(self, Id, dayName, calories, protein, fat, carbs):
+        self.Id = Id
         self.dayName = dayName
         self.calories = calories
         self.protein = protein

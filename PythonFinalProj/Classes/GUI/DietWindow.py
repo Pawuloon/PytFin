@@ -5,7 +5,7 @@ import re
 
 from PythonFinalProj.Classes.DTO.MealDTO import MealDTO
 from PythonFinalProj.Classes.DataBase.DataBase import DataBase
-from PythonFinalProj.Classes.Model.Diet import Diet
+from PythonFinalProj.Classes.DTO.DietDTO import DietDTO
 
 
 # Window for accessing your own diet
@@ -105,9 +105,9 @@ class DietWindow(tk.Toplevel):
             carbs += float(x.carbs)
 
         if formatted == day:
-            DataBase().replaceDay(Diet(day, calories, proteins, fats, carbs))
+            DataBase().replaceDay(DietDTO(day, calories, proteins, fats, carbs))
         else:
-            DataBase().addDay(Diet(day, calories, proteins, fats, carbs))
+            DataBase().addDay(DietDTO(day, calories, proteins, fats, carbs))
         messagebox.showinfo("Info", "Diet added successfully !\n"
                                     "You can now access your monthly progress !\n"
                             +

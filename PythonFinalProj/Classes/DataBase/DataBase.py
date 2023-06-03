@@ -1,6 +1,7 @@
 import sqlite3 as sql
 from datetime import datetime
 
+from PythonFinalProj.Classes.Model.Diet import Diet
 from PythonFinalProj.Classes.Model.Meal import Meal
 
 
@@ -51,6 +52,21 @@ class DataBase:
         self.cursor.execute("SELECT DayName FROM Day order by Id desc limit 1")
         result = self.cursor.fetchone()
         return result
+
+    def getDiets(self):
+        dietList = []
+        mt = self.cursor.execute("SELECT * FROM Day")
+        result = mt.fetchall()
+        for data in result:
+            Id = data[0]
+            dayName = data[1]
+            calories = data[2]
+            protein = data[3]
+            fat = data[4]
+            carbs = data[5]
+            diet = Diet(Id, dayName, calories, protein, fat, carbs)
+            dietList.append(diet)
+        return dietList
 
     # Retrive meals from database
     def getProducts(self):
