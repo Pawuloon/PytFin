@@ -2,6 +2,9 @@ import tkinter as tk
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
+
+from PythonFinalProj.Classes.DataBase.DataBase import DataBase
 
 
 # Add plots for showing daily basis calories within a month
@@ -9,7 +12,7 @@ from matplotlib.figure import Figure
 class Plots(tk.Toplevel):
     def __init__(self, masterWindow):
         super().__init__(master=masterWindow)
-        self.title("Monthly progress")
+        self.title("Weekly progress")
         self.geometry("500x400")
         self.resizable(False, False)
         self.setBackground()
@@ -21,10 +24,16 @@ class Plots(tk.Toplevel):
         background.place(x=0, y=0, relwidth=1, relheight=1)
         background.image = image
 
-
     def addPlots(self):
+        days = DataBase().getDiets()
+        dayCalories = []
+        for day in reversed(days):
+            dayCalories.append(day.calories)
         fig = Figure(figsize=(6, 4), dpi=100)
         plot = fig.add_subplot(111)
-        plot.plot([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [2000, 1500, 1000, 500, 0, 0, 0, 0, 0, 0])
+        plot.set_xlabel("Daily progress")
+        plot.plot([1, 2, 3, 4, 5, 6, 7], [dayCalories[0], dayCalories[1], dayCalories[2], dayCalories[3], dayCalories[4], dayCalories[5], dayCalories[6]])
+        plot.set_xticks(range(1, 8))
         canvas = FigureCanvasTkAgg(fig, master=self)
         canvas.draw()
+        canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
