@@ -41,12 +41,14 @@ class DietWindow(tk.Toplevel):
         self.setBackground()
         self.buttons()
 
+    # Background
     def setBackground(self):
         image = tk.PhotoImage(file="../Pics/img.png")
         background = tk.Label(self, image=image)
         background.place(x=0, y=0, relwidth=1, relheight=1)
         background.image = image
 
+    # Selections
     def selectionGet(self, *args):
         currSelection = self.optionVariable.get()
         self.selection.set(currSelection)
@@ -71,6 +73,7 @@ class DietWindow(tk.Toplevel):
         currSelection6 = self.optionVariable6.get()
         self.selection6.set(currSelection6)
 
+    # Split the data into letters and numbers
     def findLetters(self, string):
         pattern = r"[A-Za-z]+|\d+"
         matches = re.findall(pattern, string)
@@ -78,6 +81,7 @@ class DietWindow(tk.Toplevel):
         numerals = [match for match in matches if match.isdigit()]
         return letters, numerals
 
+    #  Database operations for diet adding
     def confirm(self):
         calories = 0
         proteins = 0
@@ -123,6 +127,7 @@ class DietWindow(tk.Toplevel):
                             str(carbs) + " carbs\n")
         self.destroy()
 
+    # Buttons
     def buttons(self):
         listOfProducts = DataBase().getProducts()
         # Day

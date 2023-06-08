@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
+from PythonFinalProj.Classes.GUI.BmiWindow import BmiWindow
 from PythonFinalProj.Classes.GUI.DietWindow import DietWindow
 from PythonFinalProj.Classes.GUI.Plots import Plots
 from PythonFinalProj.Classes.GUI.ProductInputWindow import ProductInputWindow
@@ -9,6 +10,7 @@ from PythonFinalProj.Classes.GUI.ProductInputWindow import ProductInputWindow
 This class is responsible for creating the main window of the program
 It serves as a menu for the user to choose what he wants to do
 """
+
 
 class MyGui(tk.Tk):
     def __init__(self):
@@ -66,6 +68,12 @@ class MyGui(tk.Tk):
         buttonAccessPlot.place(x=10, y=10, anchor=tk.CENTER)
         buttonAccessPlot.pack()
 
+        # Fourth Button for BMI
+        buttonAccessBMI = tk.Button(self, text="Access your BMI", width=70, height=5,
+                                    command=self.bmiClick, bg='yellow')
+        buttonAccessBMI.place(x=15, y=15, anchor=tk.CENTER)
+        buttonAccessBMI.pack()
+
     # Product input window
     def buEnClick(self):
         ProductInputWindow(self)
@@ -77,6 +85,10 @@ class MyGui(tk.Tk):
     # Plot window
     def plotClick(self):
         Plots(self)
+
+    # BMI window
+    def bmiClick(self):
+        BmiWindow(self)
 
     # Run mainloop
     def run(self):
