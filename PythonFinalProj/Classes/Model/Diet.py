@@ -1,3 +1,7 @@
+
+"""
+Diet class responsible for representing the diet model
+"""
 class Diet:
     def __init__(self, Id, dayName, calories, protein, fat, carbs):
         self.Id = Id

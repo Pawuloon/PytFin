@@ -3,6 +3,11 @@ from tkinter import messagebox
 
 from PythonFinalProj.Classes.DataBase.DataBase import DataBase
 
+"""
+This class is responsible for creating a window for user to input his product
+
+"""
+
 
 class ProductInputWindow(tk.Toplevel):
     def __init__(self, mainWindow):
@@ -65,12 +70,12 @@ class ProductInputWindow(tk.Toplevel):
         self.initializeDataBase(name, cal, prot, fat, carbs)
         ProductInputWindow.destroy(self)
 
-    # def initializeDataBase(self):
-
+    # Initialize database
     def initializeDataBase(self, name=0, cal=0, prot=0, fat=0, carbs=0):
         data = DataBase()
         data.add(name, cal, prot, fat, carbs)
 
+    # Set background
     def setBackground(self):
         image = tk.PhotoImage(file="../Pics/img.png")
         background = tk.Label(self, image=image)

@@ -1,3 +1,8 @@
+"""
+Class mealDTO responsible for holding the data of a meal
+"""
+
+
 class MealDTO:
     def __init__(self, name, cal, protein, fat, carbs):
         self.name = name

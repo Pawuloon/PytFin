@@ -7,8 +7,14 @@ from PythonFinalProj.Classes.DTO.MealDTO import MealDTO
 from PythonFinalProj.Classes.DataBase.DataBase import DataBase
 from PythonFinalProj.Classes.DTO.DietDTO import DietDTO
 
+"""
+Class responsible for the diet window
+This class is responsible for the diet window
+It creates the diet window and all the buttons and labels
+It also creates the diet and adds it to the database
+"""
 
-# Window for accessing your own diet
+
 class DietWindow(tk.Toplevel):
 
     def __init__(self, masterWindow):

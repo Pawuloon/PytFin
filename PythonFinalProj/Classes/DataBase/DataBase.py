@@ -4,8 +4,14 @@ from datetime import datetime
 from PythonFinalProj.Classes.Model.Diet import Diet
 from PythonFinalProj.Classes.Model.Meal import Meal
 
+""" 
+Class for database 
+This class is responsible for the database
+It creates the database and the tables 
+It also adds and deletes data from the database
+"""
 
-# Add retrival option when user will be entering products into his diet
+
 class DataBase:
     def __init__(self):
         self.currentDate = datetime.now()
@@ -37,6 +43,7 @@ class DataBase:
                             "VALUES (?,?,?,?,?)", (Diet.dayName, Diet.calories, Diet.protein, Diet.fat, Diet.carbs))
         self.conn.commit()
 
+    # Update day in database
     def replaceDay(self, Diet):
         self.cursor.execute("UPDATE Day SET Calories = ?, Protein = ?, Fat = ?, Carbohydrates = ? WHERE Id = ?",
                             (Diet.calories, Diet.protein, Diet.fat, Diet.carbs, self.cursor.lastrowid))
@@ -48,11 +55,13 @@ class DataBase:
                             "WHERE Name='' OR Calories='' or Protein ='' or Fat ='' or Carbohydrates =''")
         self.conn.commit()
 
+    # Get day from database
     def getDay(self):
         self.cursor.execute("SELECT DayName FROM Day order by Id desc limit 1")
         result = self.cursor.fetchone()
         return result
 
+    # Retrieve diets from database
     def getDiets(self):
         dietList = []
         mt = self.cursor.execute("SELECT * FROM Day")
@@ -68,7 +77,7 @@ class DataBase:
             dietList.append(diet)
         return dietList
 
-    # Retrive meals from database
+    # Retrieve meals from database
     def getProducts(self):
         mealList = []
         myRes = self.cursor.execute("SELECT * FROM Product")

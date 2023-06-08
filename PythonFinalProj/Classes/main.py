@@ -1,5 +1,8 @@
-from PythonFinalProj.Classes.DataBase.DataBase import DataBase
 from PythonFinalProj.Classes.GUI.MyGui import MyGui
+
+"""
+Main class
+"""
 
 if __name__ == '__main__':
 

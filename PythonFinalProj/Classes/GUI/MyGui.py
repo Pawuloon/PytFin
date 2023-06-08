@@ -5,6 +5,10 @@ from PythonFinalProj.Classes.GUI.DietWindow import DietWindow
 from PythonFinalProj.Classes.GUI.Plots import Plots
 from PythonFinalProj.Classes.GUI.ProductInputWindow import ProductInputWindow
 
+"""
+This class is responsible for creating the main window of the program
+It serves as a menu for the user to choose what he wants to do
+"""
 
 class MyGui(tk.Tk):
     def __init__(self):
@@ -66,11 +70,14 @@ class MyGui(tk.Tk):
     def buEnClick(self):
         ProductInputWindow(self)
 
+    # Diet window
     def dietClick(self):
         DietWindow(self)
 
+    # Plot window
     def plotClick(self):
         Plots(self)
 
+    # Run mainloop
     def run(self):
         self.mainloop()

@@ -1,3 +1,8 @@
+"""
+Class for storing diet information
+"""
+
+
 class DietDTO:
     def __init__(self, name, calories, protein, carbs, fat):
         self.name = name
