@@ -29,3 +29,18 @@ The project goal is to allow the user for a simplified diet managment and allows
 - Enjoy your own diet and saved time !
 ## 
 
+## Additional remarks
+
+### Problems faced 
+- tkinter not being very cooperative when it came down to having multiple windows
+- DataBase being a bit hard to adjust when a user decided to change his diet for a day 
+- The idea itself was a bit of a challange to begin with, since a way to go around certain things had to be designed while at the same time not needing to handiap the user with unintuitive design
+### 
+### Lessons's Learned
+- Ability to use tkinter package
+- Ability to implement sql database into the project
+- Ability to implement plots and to import data into them 
+- Ability to use some imaginantion when it comes down to some approaches
+###
+##
+
