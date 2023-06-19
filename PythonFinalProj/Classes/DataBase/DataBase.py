@@ -38,9 +38,9 @@ class DataBase:
         self.ditch()
 
     # Add day to database
-    def addDay(self, Diet):
+    def addDay(self, Dieto):
         self.cursor.execute("INSERT OR REPLACE INTO Day (DayName,Calories,Protein,Fat,Carbohydrates) "
-                            "VALUES (?,?,?,?,?)", (Diet.dayName, Diet.calories, Diet.protein, Diet.fat, Diet.carbs))
+                            "VALUES (?,?,?,?,?)", (Dieto.name, Dieto.calories, Dieto.protein, Dieto.fat, Dieto.carbs))
         self.conn.commit()
 
     # Update day in database
